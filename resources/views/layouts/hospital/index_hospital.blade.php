@@ -11,6 +11,9 @@
 
     <title>Rumah Sakit</title>
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendorpublic/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -47,8 +50,8 @@
                 <span>Dashboard</span></a>
         </li>
 
-        <li class="nav-item <?php if (Request::segment(1) == 'spesialism') echo 'active'?>">
-            <a class="nav-link" href="{{ url('spesialism') }}">
+        <li class="nav-item <?php if (Request::segment(1) == 'spesialist') echo 'active'?>">
+            <a class="nav-link" href="{{ url('spesialist') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Spesialisasi</span></a>
         </li>

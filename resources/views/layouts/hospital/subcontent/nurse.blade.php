@@ -10,6 +10,33 @@
 
     <hr>
 
+    @if($msg=Session::get('msgSuccessAddNur'))
+        <div class="alert alert-success">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
+    @if($msg=Session::get('msgSuccessDelNur'))
+        <div class="alert alert-success">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
+    @if($msg=Session::get('msgFailedAddNur'))
+        <div class="alert alert-danger">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Perawat</h6>
@@ -27,6 +54,20 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    @php $no=1; @endphp
+                    @foreach($getNurse as $getNurses)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $getNurses->name }}</td>
+                            <td>{{ $getNurses->address }}</td>
+                            <td>{{ $getNurses->number_phone }}</td>
+                            <td><img src="{{asset('img/'.$getNurses->photo)}}" class="img-fluid" style="width: 100px;height: 80px"></td>
+                            <td>
+                                <a href="#" class="btn btn-success">Edit</a>
+                                <a href="{{ url('deletenurse/'.$getNurses->id) }}" class="btn btn-danger" onclick="return confirm('Hapus data?')">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
@@ -43,24 +84,29 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form action="{{ url('addnurse') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label>Nama Perawat</label>
-                            <input type="text" class="form-control" name="name">
+                            <input type="text" class="form-control" required name="name">
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <input type="text" class="form-control" name="address">
+                            <input type="text" class="form-control" required name="address">
                         </div>
                         <div class="form-group">
                             <label>No Telpon</label>
-                            <input type="number" class="form-control" name="number_phone">
+                            <input type="number" class="form-control" required name="number_phone">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" required name="password">
                         </div>
                         <div class="form-group">
                             <label>Foto</label>
                             <input type="file" class="form-control" name="photo">
                         </div>
-                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary" onclick="return confirm('Tambah perawat?')">
                     </form>
                 </div>
             </div>

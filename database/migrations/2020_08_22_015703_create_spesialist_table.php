@@ -15,6 +15,8 @@ class CreateSpesialistTable extends Migration
     {
         Schema::create('spesialist', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('hospital_id');
+            $table->foreign('hospital_id')->references('id')->on('hospital')->onDelete('cascade');
             $table->string('name');
             $table->text('desc');
             $table->timestamps();

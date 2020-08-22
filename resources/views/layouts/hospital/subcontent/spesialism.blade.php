@@ -10,6 +10,42 @@
 
     <hr>
 
+    @if($msg=Session::get('msgSuccessDelSpec'))
+        <div class="alert alert-success">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
+    @if($msg=Session::get('msgSuccessAddSpec'))
+        <div class="alert alert-success">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
+    @if($msg=Session::get('msgFailedAddSpec'))
+        <div class="alert alert-danger">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
+    @if($msg=Session::get('msgFailDelSpec'))
+        <div class="alert alert-danger">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Spesialisasi</h6>
@@ -25,6 +61,18 @@
                         <th>Aksi</th>
                     </tr>
                     </thead>
+                    @php $no=1; @endphp
+                    @foreach($getSpesialist as $getSpesialists)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $getSpesialists->name }}</td>
+                            <td>{{ $getSpesialists->desc }}</td>
+                            <td>
+                                <a href="#" class="btn btn-success">Edit</a>
+                                <a href="{{ url('deletespecialsit/'.$getSpesialists->id) }}" class="btn btn-danger" onclick="return confirm('Hapus data?')">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
@@ -41,7 +89,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form action="{{ url('addspecialist') }}" method="post">
+                        @csrf
                         <div class="form-group">
                             <label>Nama Spesialisasi</label>
                             <input type="text" class="form-control" name="name">
@@ -50,7 +99,7 @@
                             <label>Deskripsi</label>
                             <textarea class="form-control" name="desc"></textarea>
                         </div>
-                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary" onclick="return confirm('Tambah Spesialis?')">
                     </form>
                 </div>
             </div>

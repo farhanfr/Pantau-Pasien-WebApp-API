@@ -20,6 +20,7 @@ class CreateNurseTable extends Migration
             $table->string('name',50);
             $table->text('address');
             $table->string('number_phone');
+            $table->string('password');
             $table->string('photo',100)->nullable();
             $table->timestamps();
         });
