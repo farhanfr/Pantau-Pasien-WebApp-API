@@ -34,6 +34,11 @@ Route::get('patient','Usual\Patient\GetAllByHospitalIdController');
 Route::post('addpatient','Usual\Patient\AddController');
 Route::get('deletedoctor/{id}','Usual\Patient\DeleteController');
 
+//Backup
+    Route::get('patientbackup','Usual\Backup\Patient\GetAllByHospitalIdController');
+Route::get('addbackup/{id}','Usual\Backup\Patient\AddController');
+Route::get('deletebackuppatient/{id}','Usual\Backup\Patient\DeleteController');
+
 //===================
 Route::get('/', function () {
     return view('layouts.hospital.subcontent.dashboard');

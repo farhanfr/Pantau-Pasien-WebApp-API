@@ -10,6 +10,15 @@
 
     <hr>
 
+    @if($msg=Session::get('msgSuccessBacPat'))
+        <div class="alert alert-success">
+            {{ $msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times</span>
+            </button>
+        </div>
+    @endif
+
     @if($msg=Session::get('msgSuccessDelPat'))
         <div class="alert alert-success">
             {{ $msg }}
@@ -66,7 +75,7 @@
                             <td>{{ $getPatients->date_inpatient }}</td>
                             <td>
                                 <a href="#" class="btn btn-success">Edit</a>
-                                <a href="#" class="btn btn-info">Backup</a>
+                                <a href="{{ url('addbackup/'.$getPatients->id) }}" class="btn btn-info" onclick="return confirm('Backup data pasien ?')">Backup</a>
                                 <a href="{{ url('deletedoctor/'.$getPatients->id) }}" class="btn btn-danger" onclick="return confirm('Hapus data?')">Hapus</a>
                             </td>
                         </tr>
@@ -121,10 +130,6 @@
                         <div class="form-group">
                             <label>Nik</label>
                             <input type="text" class="form-control" required name="nik">
-                        </div>
-                        <div class="form-group">
-                            <label>Tgl Masuk RS</label>
-                            <input type="date" class="form-control" required name="date_inpatient">
                         </div>
                         <input type="submit" name="submit" value="Tambah" class="btn btn-primary" onclick="return confirm('Tambah Data?')">
                     </form>

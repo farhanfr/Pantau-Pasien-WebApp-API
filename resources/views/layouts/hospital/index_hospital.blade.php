@@ -75,7 +75,7 @@
         </li>
 
         <li class="nav-item <?php if (Request::segment(1) == 'patientbackup') echo 'active'?>">
-            <a class="nav-link" href="{{ url('patient') }}">
+            <a class="nav-link" href="{{ url('patientbackup') }}">
                 <i class="fas fa-fw fa-save"></i>
                 <span>Backup Data</span></a>
         </li>
