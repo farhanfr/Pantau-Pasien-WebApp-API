@@ -13,7 +13,19 @@
 //====================Hospital====================
 
 //Auth
+Route::get('/', function () {
+    return view('layouts.hospital.auth.login_hospital');
+});
+Route::get('registerhospital', function () {
+    return view('layouts.hospital.auth.register_hospital');
+});
+Route::post('addhospital','Usual\Auth\Hospital\RegisterController');
+Route::post('loginhospital','Usual\Auth\Hospital\LoginController');
 
+//Dashbaord
+Route::get('hospitaldashboard', function () {
+    return view('layouts.hospital.subcontent.dashboard');
+});
 //Spesialist
 Route::post('addspecialist','Usual\Spesialist\AddController');
 Route::get('spesialist','Usual\Spesialist\GetAllByHospitalIdController');
@@ -35,14 +47,11 @@ Route::post('addpatient','Usual\Patient\AddController');
 Route::get('deletedoctor/{id}','Usual\Patient\DeleteController');
 
 //Backup
-    Route::get('patientbackup','Usual\Backup\Patient\GetAllByHospitalIdController');
+Route::get('patientbackup','Usual\Backup\Patient\GetAllByHospitalIdController');
 Route::get('addbackup/{id}','Usual\Backup\Patient\AddController');
 Route::get('deletebackuppatient/{id}','Usual\Backup\Patient\DeleteController');
 
-//===================
-Route::get('/', function () {
-    return view('layouts.hospital.subcontent.dashboard');
-});
+
 
 
 
