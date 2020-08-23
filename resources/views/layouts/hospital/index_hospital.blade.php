@@ -52,26 +52,32 @@
 
         <li class="nav-item <?php if (Request::segment(1) == 'spesialist') echo 'active'?>">
             <a class="nav-link" href="{{ url('spesialist') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-list"></i>
                 <span>Spesialisasi</span></a>
         </li>
 
         <li class="nav-item <?php if (Request::segment(1) == 'doctor') echo 'active'?>">
             <a class="nav-link" href="{{ url('doctor') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-hospital-user"></i>
                 <span>Dokter</span></a>
         </li>
 
         <li class="nav-item <?php if (Request::segment(1) == 'nurse') echo 'active'?>">
             <a class="nav-link" href="{{ url('nurse') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-user-nurse"></i>
                 <span>Perawat</span></a>
         </li>
 
         <li class="nav-item <?php if (Request::segment(1) == 'patient') echo 'active'?>">
             <a class="nav-link" href="{{ url('patient') }}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-fw fa-user"></i>
                 <span>Pasien</span></a>
+        </li>
+
+        <li class="nav-item <?php if (Request::segment(1) == 'patientbackup') echo 'active'?>">
+            <a class="nav-link" href="{{ url('patient') }}">
+                <i class="fas fa-fw fa-save"></i>
+                <span>Backup Data</span></a>
         </li>
 
         <!-- Sidebar Toggler (Sidebar) -->

@@ -29,14 +29,17 @@ Route::get('nurse','Usual\Nurse\GetAllByHospitalIdController');
 Route::post('addnurse','Usual\Nurse\AddController');
 Route::get('deletenurse/{id}','Usual\Nurse\DeleteController');
 
+//Patient
+Route::get('patient','Usual\Patient\GetAllByHospitalIdController');
+Route::post('addpatient','Usual\Patient\AddController');
+Route::get('deletedoctor/{id}','Usual\Patient\DeleteController');
+
 //===================
 Route::get('/', function () {
     return view('layouts.hospital.subcontent.dashboard');
 });
 
-Route::get('patient', function () {
-    return view('layouts.hospital.subcontent.patient');
-});
+
 
 
 
